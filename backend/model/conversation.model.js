@@ -12,7 +12,7 @@ const conversationSchema = new mongoose.Schema(
     messages: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Message", 
+        ref: "Message",
         default: [],
       },
     ],
@@ -20,5 +20,5 @@ const conversationSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Conversation = mongoose.Model("Conversations", conversationSchema);
+const Conversation = mongoose.model("Conversations", conversationSchema);
 export default Conversation;
