@@ -5,9 +5,10 @@ import generateTokenAndSetCookie from "../utils/generateToken.js";
 export const signup = async (req, res) => {
   try {
     const { fullname, username, password, confirmpassword, gender } = req.body;
-
+    // console.log(password);
+    // console.log(confirmpassword);
     if (password !== confirmpassword) {
-      return res.status(400).json({ error: "password not match" });
+      return res.status(400).json({ error: "password don't match" });
     }
 
     const user = await User.findOne({ username });
@@ -63,7 +64,12 @@ export const login = async (req, res) => {
     }
 
     generateTokenAndSetCookie(user._id, res);
-    res.status(200).json({ success: true });
+    res.status(200).json({
+      _id: user._id,
+      fullname: user.fullname,
+      username: user.username,
+      profilePic: user.profilePic,
+    });
   } catch (error) {
     console.log("error in login:", error.message);
     res.status(500).json({ error: "Internal server error" });

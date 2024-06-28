@@ -7,8 +7,6 @@ import messageRoute from "./route/message.route.js";
 import userRoutes from "./route/user.route.js";
 
 import connectToMongoDB from "./db/connectToMongoDB.js";
-// import protectRoute from "./middleware/protectRoute.js";
-
 const app = express();
 dotenv.config();
 
