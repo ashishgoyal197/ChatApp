@@ -7,7 +7,7 @@ export default function useSendMessage() {
   const { messages, setMessages, selectedConversation } = useConversation();
 
   const sendMessage = async (message) => {
-    console.log(message);
+    // console.log(message);
     setLoading(true);
     try {
       const res = await fetch(`/api/message/send/${selectedConversation._id}`, {
@@ -18,7 +18,7 @@ export default function useSendMessage() {
         body: JSON.stringify({ message }),
       });
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
 
       if (data.error) {
         throw new Error(data.error);

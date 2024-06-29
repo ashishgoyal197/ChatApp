@@ -5,9 +5,10 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./route/auth.route.js";
 import messageRoute from "./route/message.route.js";
 import userRoutes from "./route/user.route.js";
+import { app, server } from "./socket/socket.js";
 
 import connectToMongoDB from "./db/connectToMongoDB.js";
-const app = express();
+
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
@@ -23,7 +24,7 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   connectToMongoDB();
   console.log(`Server is listning at ${PORT}`);
 });
