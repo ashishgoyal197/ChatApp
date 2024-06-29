@@ -5,7 +5,10 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon backend/index.js"
+    "server": "nodemon backend/index.js",
+    "start": "node backend/index.js",
+    "build": "npm install && npm install --prefix frontend/ChatApp && npm run build --prefix frontend/ChatApp"
+
   },
   "type": "module",
   "keywords": [],
