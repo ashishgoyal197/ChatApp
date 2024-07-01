@@ -1,27 +1,40 @@
-import { useEffect } from "react";
 import useConversation from "../../zustand/useConversation";
 import MessageInput from "./MessageInput";
 import Messages from "./Messages";
 import { TiMessages } from "react-icons/ti";
+import { FaArrowLeft } from "react-icons/fa";
 import { useAuthContext } from "../../context/AuthContext";
 
 Messages;
 export default function MessageContainer() {
-  // const noChatSelected = false;
-  const { selectedConversation, setSelectedConversation } = useConversation();
+  const { selectedConversation } = useConversation();
+  const { setMessenger } = useConversation();
 
-  useEffect(() => {
-    return () => setSelectedConversation(null);
-  }, [setSelectedConversation]);
+  // useEffect(() => {
+  //   return () => setSelectedConversation(null);
+  // }, [setSelectedConversation]);
+
+  const handleclick = () => {
+    setMessenger(false);
+  };
+
+  const screenWidth = window.screen.width;
 
   return (
-    <div className="md:min-w-[450px] flex flex-col">
+    <div className="min-w-[350px] md:min-w-[450px] flex flex-col">
       {!selectedConversation ? (
         <NoChatSelected />
       ) : (
         <>
           {/* Header */}
           <div className="bg-slate-500 px-4 py-2 mb-2">
+            {screenWidth <= "750" ? (
+              <button className="px-4" onClick={handleclick}>
+                <FaArrowLeft />
+              </button>
+            ) : (
+              ""
+            )}
             <span className="label-text">To:</span>{" "}
             <span className="text-gray-900 font-bold">
               {selectedConversation.fullname}

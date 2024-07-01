@@ -1,5 +1,4 @@
 // import React from 'react'
-// import "C:/Users/ashis/OneDrive/Documents/ChatApp/frontend/ChatApp/src/index.css";
 
 import { useAuthContext } from "../../context/AuthContext";
 import { extractTime } from "../../utils/extractTime";
@@ -25,7 +24,7 @@ export default function Message(props) {
         </div>
       </div>
       <div
-        className={`chat-bubble text-white ${bubbleBgColor} ${shakeClass} pb-2`}
+        className={`chat-bubble text-white ${bubbleBgColor} ${shakeClass} pb-2 break-words max-w-56`}
       >
         {props.message.message}
       </div>

@@ -3,18 +3,27 @@ import useConversation from "../../zustand/useConversation";
 
 export default function Conversation(props) {
   const { selectedConversation, setSelectedConversation } = useConversation();
-  const isSelected = selectedConversation?._id === props.conversation._id;
+  const { setMessenger } = useConversation();
 
   const { onlineUsers } = useSocketContext();
   const isOnline = onlineUsers.includes(props.conversation._id);
 
+  const one = () => {
+    setSelectedConversation(props.conversation);
+    if (selectedConversation !== null) two();
+  };
+  const two = () => {
+    setMessenger(true);
+  };
+  const handleclick = () => {
+    one();
+  };
+
   return (
     <div>
       <div
-        className={`flex gap-2 items-center rounded p-2 py-1 cursor-pointer ${
-          isSelected ? "bg-sky-500" : ""
-        }`}
-        onClick={() => setSelectedConversation(props.conversation)}
+        className={`flex gap-2 items-center rounded p-2 py-1 cursor-pointer`}
+        onClick={handleclick}
       >
         <div className={`avatar ${isOnline ? "online" : ""}`}>
           <div className="w-12 rounded-full">

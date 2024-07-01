@@ -92,10 +92,6 @@ export default function SignUp() {
               }
             />
           </div>
-          <div>
-            <p>{inputs.password}</p>
-            <p>{inputs.confirmpassword}</p>
-          </div>
 
           {/* gender check */}
           <GenderCheckbox

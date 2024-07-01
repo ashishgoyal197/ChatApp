@@ -3,7 +3,6 @@ import useGetMessages from "../../hooks/useGetMessages";
 import MessageSkeleton from "../skeletons/MessageSkeleton";
 import Message from "./Message";
 import useListenMessages from "../../hooks/useListenMessages";
-// import "C:/Users/ashis/OneDrive/Documents/ChatApp/frontend/ChatApp/src/index.css";
 
 export default function Messages() {
   const { messages, loading } = useGetMessages();
