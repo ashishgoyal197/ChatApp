@@ -13,7 +13,8 @@ export default function Message(props) {
   const profilePic = fromMe
     ? authUser.profilePic
     : selectedConversation?.profilePic;
-  const bubbleBgColor = fromMe ? "bg-blue-500" : "";
+  const bubbleBgColor = fromMe ? "bg-blue-500" : "bg-black/10";
+  const textColor = fromMe ? "text-white" : "text-black";
   const shakeClass = props.message.shouldShake ? "shake" : "";
 
   return (
@@ -24,11 +25,11 @@ export default function Message(props) {
         </div>
       </div>
       <div
-        className={`chat-bubble text-white ${bubbleBgColor} ${shakeClass} pb-2 break-words max-w-56`}
+        className={`chat-bubble ${textColor} ${bubbleBgColor} ${shakeClass} pb-2 break-words max-w-56`}
       >
         {props.message.message}
       </div>
-      <div className="chat-footer opacity-50 text-xs flex gap-1 items-center">
+      <div className="chat-footer text-xs flex gap-1 items-center">
         {extractTime(props.message.createdAt)}
       </div>
     </div>

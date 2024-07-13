@@ -24,20 +24,20 @@ export default function SignUp() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
+    <div className="flex flex-col items-center justify-center min-w-96 mx-auto bg-white">
       <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
-        <h1 className="text-3xl font-semibold text-center text-gray-300">
+        <h1 className="text-3xl font-semibold text-center text-black">
           Sign Up <span className="text-blue-500"> ChatApp</span>
         </h1>
         <form onSubmit={handleSubmit}>
           <div>
             <label className="label p-2">
-              <span className="text-base label-text">Full Name</span>
+              <span className="text-base label-text text-black">Full Name</span>
             </label>
             <input
               type="text"
               placeholder="Enter Full Name"
-              className="w-full input input-bordered  h-10"
+              className="w-full input input-bordered  h-10 bg-black/5 text-black"
               value={inputs.fullname}
               onChange={(e) =>
                 setInputs({ ...inputs, fullname: e.target.value })
@@ -50,12 +50,12 @@ export default function SignUp() {
 
           <div>
             <label className="label p-2 ">
-              <span className="text-base label-text">Username</span>
+              <span className="text-base label-text text-black">Username</span>
             </label>
             <input
               type="text"
               placeholder="Enter Username"
-              className="w-full input input-bordered h-10"
+              className="w-full input input-bordered h-10 bg-black/5 text-black"
               value={inputs.username}
               onChange={(e) =>
                 setInputs({ ...inputs, username: e.target.value })
@@ -65,12 +65,12 @@ export default function SignUp() {
 
           <div>
             <label className="label">
-              <span className="text-base label-text">Password</span>
+              <span className="text-base label-text text-black">Password</span>
             </label>
             <input
               type="password"
               placeholder="Enter Password"
-              className="w-full input input-bordered h-10"
+              className="w-full input input-bordered h-10 bg-black/5 text-black"
               value={inputs.password}
               onChange={(e) =>
                 setInputs({ ...inputs, password: e.target.value })
@@ -80,12 +80,14 @@ export default function SignUp() {
 
           <div>
             <label className="label">
-              <span className="text-base label-text">Confirm Password</span>
+              <span className="text-base label-text text-black">
+                Confirm Password
+              </span>
             </label>
             <input
               type="password"
               placeholder="Confirm Password"
-              className="w-full input input-bordered h-10"
+              className="w-full input input-bordered h-10 bg-black/5 text-black"
               value={inputs.confirmpassword}
               onChange={(e) =>
                 setInputs({ ...inputs, confirmpassword: e.target.value })
@@ -99,7 +101,7 @@ export default function SignUp() {
             selectedGender={inputs.gender}
           />
           <Link
-            className="text-sm hover:underline hover:text-blue-600 mt-2 inline-block"
+            className="text-sm hover:underline text-blue-600 mt-8 inline-block"
             to="/login"
           >
             Already have an account?
@@ -107,7 +109,7 @@ export default function SignUp() {
 
           <div>
             <button
-              className="btn btn-block btn-sm mt-2 border border-slate-700"
+              className="btn btn-block btn-sm mt-1 text-lg border h-10 bg-blue-600 text-white"
               disabled={loading}
             >
               {loading ? (

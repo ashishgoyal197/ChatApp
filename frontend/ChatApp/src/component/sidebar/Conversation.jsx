@@ -33,10 +33,9 @@ export default function Conversation(props) {
 
         <div className="flex flex-col flex-1">
           <div className="flex gap-3 justify-between">
-            <p className="font-bold text-gray-200">
+            <p className="font-bold text-black">
               {props.conversation.fullname}
             </p>
-            <span className="text-xl">{props.emoji}</span>
           </div>
         </div>
       </div>

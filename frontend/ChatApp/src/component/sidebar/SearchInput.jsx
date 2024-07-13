@@ -5,7 +5,7 @@ import useGetConversation from "../../hooks/useGetConversation";
 import toast from "react-hot-toast";
 export default function SearchInput() {
   const [search, setSearch] = useState("");
-  const { setSelectedConversation } = useConversation();
+  const { setSelectedConversation, setMessanger } = useConversation();
   const { conversations } = useGetConversation();
 
   const handleSubmit = (e) => {
@@ -19,6 +19,7 @@ export default function SearchInput() {
     );
     if (conversation) {
       setSelectedConversation(conversation);
+      setMessanger(true);
       setSearch("");
     } else {
       toast.error("No Such user found");
@@ -31,11 +32,11 @@ export default function SearchInput() {
         <input
           type="text"
           placeholder="Search…"
-          className="input input-bordered rounded-full"
+          className="input input-bordered rounded-full  bg-black/10 text-black"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <button type="submit" className="btn btn-circle bg-sky-500 text-white">
+        <button type="submit" className="btn btn-circle bg-white text-sky-500">
           <IoSearchSharp className="w-6 h-6 outline-none" />
         </button>
       </form>
