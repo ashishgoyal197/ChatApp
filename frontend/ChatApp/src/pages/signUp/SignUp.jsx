@@ -113,7 +113,7 @@ export default function SignUp() {
               disabled={loading}
             >
               {loading ? (
-                <span className="loading loading-spinner"></span>
+                <span className="loading loading-spinner bg-blue-600 text-white"></span>
               ) : (
                 "Sign Up"
               )}

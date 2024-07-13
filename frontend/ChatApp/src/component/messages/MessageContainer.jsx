@@ -35,7 +35,7 @@ export default function MessageContainer() {
             ) : (
               ""
             )}
-            <span className="label-text">To:</span>{" "}
+
             <span className="text-black font-bold flex-grow text-center">
               {selectedConversation.fullname}
             </span>

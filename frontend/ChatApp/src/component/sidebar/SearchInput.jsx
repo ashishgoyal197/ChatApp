@@ -5,7 +5,7 @@ import useGetConversation from "../../hooks/useGetConversation";
 import toast from "react-hot-toast";
 export default function SearchInput() {
   const [search, setSearch] = useState("");
-  const { setSelectedConversation, setMessanger } = useConversation();
+  const { setSelectedConversation, setMessenger } = useConversation();
   const { conversations } = useGetConversation();
 
   const handleSubmit = (e) => {
@@ -19,7 +19,7 @@ export default function SearchInput() {
     );
     if (conversation) {
       setSelectedConversation(conversation);
-      setMessanger(true);
+      setMessenger(true);
       setSearch("");
     } else {
       toast.error("No Such user found");
