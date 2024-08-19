@@ -1,6 +1,4 @@
 import mongoose from "mongoose";
-// const mongoURI =
-//   "mongodb+srv://ashishgoyal197:chatapp@cluster1.kc1zudi.mongodb.net/chat-app-db?retryWrites=true&w=majority&appName=Cluster1";
 
 const connectToMongoDB = async () => {
   try {
