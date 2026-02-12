@@ -88,11 +88,13 @@ NODE_ENV=development
 
 **Example:**
 ```env
-mongo_db_uri=mongodb+srv://your_actual_username:your_actual_password@cluster.mongodb.net/chatapp?retryWrites=true&w=majority
-jwt_secret=your_strong_random_secret_key_here
+mongo_db_uri=mongodb+srv://YOUR_USERNAME_HERE:YOUR_PASSWORD_HERE@cluster.mongodb.net/chatapp?retryWrites=true&w=majority
+jwt_secret=YOUR_STRONG_RANDOM_SECRET_KEY_HERE
 PORT=5000
 NODE_ENV=development
 ```
+
+> ⚠️ **Important**: Replace all placeholder values (YOUR_USERNAME_HERE, YOUR_PASSWORD_HERE, YOUR_STRONG_RANDOM_SECRET_KEY_HERE) with your actual credentials before running the application.
 
 ## 🏃‍♂️ Running the Application
 
