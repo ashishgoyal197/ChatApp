@@ -26,8 +26,8 @@ app.use("/api/users", userRoutes);
 
 app.use(express.static(path.join(__dirname, "/frontend/ChatApp/dist")));
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
+app.get("/api/health", (req, res) => {
+  res.send("OK");
 });
 
 app.get("*", (req, res) => {
