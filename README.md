@@ -15,6 +15,19 @@ A full-stack real-time chat application built with the MERN stack (MongoDB, Expr
 - 🍪 **Cookie-based Auth**: Secure session management with HTTP-only cookies
 - 📱 **Responsive Design**: Works seamlessly on desktop and mobile devices
 
+## 🚀 Major Feature Expansion (10 New Features)
+
+1. **Personalized Profiles & Themes**: Update name, title, bio, location, status, and theme preferences.
+2. **Presence & Last Seen**: Online indicators plus last-seen timestamps when users disconnect.
+3. **Typing Indicators**: Real-time typing signals during active conversations.
+4. **Read Receipts**: See when messages are read by the recipient.
+5. **Message Reactions**: React to messages with emoji and see aggregate counts.
+6. **Message Editing**: Edit sent messages with clear “edited” markers.
+7. **Message Deletion**: Soft-delete messages with visibility updates across clients.
+8. **Pinned Messages**: Pin important messages for quick access.
+9. **Reply/Quote Threads**: Reply to specific messages with contextual previews.
+10. **Message Search**: Search conversation history with instant results.
+
 ## 🛠️ Tech Stack
 
 ### Frontend
@@ -187,10 +200,17 @@ ChatApp/
 
 ### Message Routes (`/api/message`)
 - **GET** `/api/message/:id` - Get messages with a specific user (protected)
+- **GET** `/api/message/search/:id?query=...` - Search messages in a conversation (protected)
 - **POST** `/api/message/send/:id` - Send a message to a specific user (protected)
+- **PATCH** `/api/message/edit/:id` - Edit a message (protected)
+- **DELETE** `/api/message/:id` - Delete a message (protected)
+- **POST** `/api/message/react/:id` - React to a message (protected)
+- **PATCH** `/api/message/pin/:id` - Pin/unpin a message (protected)
 
 ### User Routes (`/api/users`)
 - **GET** `/api/users` - Get all users for sidebar (protected)
+- **GET** `/api/users/profile` - Get current user profile (protected)
+- **PUT** `/api/users/profile` - Update current user profile (protected)
 
 *Note: Protected routes require authentication token in cookies.*
 

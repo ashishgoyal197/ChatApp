@@ -6,7 +6,7 @@ export default function useSendMessage() {
   const [loading, setLoading] = useState(false);
   const { messages, setMessages, selectedConversation } = useConversation();
 
-  const sendMessage = async (message) => {
+  const sendMessage = async (message, replyTo) => {
     // console.log(message);
     setLoading(true);
     try {
@@ -15,7 +15,7 @@ export default function useSendMessage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ message }),
+        body: JSON.stringify({ message, replyTo }),
       });
       const data = await res.json();
       // console.log(data);

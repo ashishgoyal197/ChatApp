@@ -40,6 +40,12 @@ export const signup = async (req, res) => {
         fullname: newUser.fullname,
         username: newUser.username,
         profilePic: newUser.profilePic,
+        title: newUser.title,
+        bio: newUser.bio,
+        location: newUser.location,
+        statusMessage: newUser.statusMessage,
+        theme: newUser.theme,
+        lastSeen: newUser.lastSeen,
       });
     } else {
       res.status(400).json({ error: "Invalid user data" });
@@ -69,6 +75,12 @@ export const login = async (req, res) => {
       fullname: user.fullname,
       username: user.username,
       profilePic: user.profilePic,
+      title: user.title,
+      bio: user.bio,
+      location: user.location,
+      statusMessage: user.statusMessage,
+      theme: user.theme,
+      lastSeen: user.lastSeen,
     });
   } catch (error) {
     console.log("error in login:", error.message);
