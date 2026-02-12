@@ -50,7 +50,7 @@ export default function Messages({ searchQuery, searchResults }) {
 
       {loading && [...Array(3)].map((_, idx) => <MessageSkeleton key={idx} />)}
       {!loading && activeMessages.length === 0 && !searchQuery && (
-        <p className="text-center">Send a messages to start a conversation</p>
+        <p className="text-center">Send a message to start a conversation</p>
       )}
       {!loading && activeMessages.length === 0 && searchQuery && (
         <p className="text-center">

@@ -12,8 +12,9 @@ export default function Message(props) {
     useConversation();
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState(props.message.message);
-  const fromMe =
-    props.message.senderId?.toString() === authUser?._id?.toString();
+  const senderId = props.message.senderId?.toString();
+  const authUserId = authUser?._id?.toString();
+  const fromMe = senderId && authUserId ? senderId === authUserId : false;
   const chatClassName = fromMe ? "chat-end" : "chat-start";
   const profilePic = fromMe
     ? authUser.profilePic

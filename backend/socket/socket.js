@@ -21,8 +21,12 @@ const userSocketMap = {};
 io.on("connection", (socket) => {
   console.log("a user is connected", socket.id);
 
-  const userId = socket.handshake.query.userId;
-  if (userId !== "undefined") {
+  const rawUserId = socket.handshake.query.userId;
+  const userId =
+    typeof rawUserId === "string" && rawUserId !== "undefined"
+      ? rawUserId
+      : null;
+  if (userId) {
     userSocketMap[userId] = socket.id;
   }
 
@@ -46,7 +50,7 @@ io.on("connection", (socket) => {
     console.log("user disconnected", socket.id);
     delete userSocketMap[userId];
     io.emit("getOnlineUsers", Object.keys(userSocketMap));
-    if (userId && userId !== "undefined") {
+    if (userId) {
       User.findByIdAndUpdate(userId, { lastSeen: new Date() }).catch((error) =>
         console.log("Error updating last seen:", error.message)
       );

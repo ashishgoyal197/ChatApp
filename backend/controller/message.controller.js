@@ -44,7 +44,7 @@ export const sendMessage = async (req, res) => {
       senderId,
       receiverId,
       message,
-      replyTo: replyTo || null,
+      replyTo,
       readBy: [senderId],
     });
 
