@@ -8,7 +8,6 @@
     "server": "nodemon backend/index.js",
     "start": "node backend/index.js",
     "build": "npm install && npm install --prefix frontend/ChatApp && npm run build --prefix frontend/ChatApp"
-
   },
   "type": "module",
   "keywords": [],
@@ -19,6 +18,7 @@
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "express-rate-limit": "^8.2.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.3",
     "react-router-dom": "^6.24.0",
