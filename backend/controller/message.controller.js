@@ -85,6 +85,7 @@ export const getMessage = async (req, res) => {
     if (!conversation) return res.status(200).json([]);
 
     const messages = conversation.messages;
+    let responseMessages = messages;
     const unreadMessageIds = messages
       .filter(
         (message) =>
@@ -102,14 +103,21 @@ export const getMessage = async (req, res) => {
         _id: { $in: unreadMessageIds },
       }).populate({ path: "replyTo", select: "message senderId isDeleted" });
       updatedMessages.forEach((message) => emitMessageUpdate(message));
-      messages.forEach((message) => {
-        if (unreadMessageIds.some((id) => id.equals(message._id))) {
-          message.readBy = [...(message.readBy || []), senderId];
+      const unreadMessageIdSet = new Set(
+        unreadMessageIds.map((id) => id.toString())
+      );
+      responseMessages = messages.map((message) => {
+        if (unreadMessageIdSet.has(message._id.toString())) {
+          return {
+            ...message.toObject(),
+            readBy: [...(message.readBy || []), senderId],
+          };
         }
+        return message;
       });
     }
 
-    res.status(200).json(messages);
+    res.status(200).json(responseMessages);
   } catch (error) {
     console.log("Error in getMessage controller: ", error.message);
     res.status(500).json({ error: "Internal server error" });
@@ -193,8 +201,9 @@ export const reactToMessage = async (req, res) => {
       return res.status(404).json({ error: "Message not found" });
     }
 
+    const userIdString = userId.toString();
     const existingIndex = targetMessage.reactions.findIndex(
-      (reaction) => reaction.userId.toString() === userId.toString()
+      (reaction) => reaction.userId.toString() === userIdString
     );
 
     if (existingIndex >= 0) {

@@ -17,7 +17,7 @@ export default function Messages({ searchQuery, searchResults }) {
 
   useEffect(() => {
     setTimeout(() => {
-      lastMessageRef.current?.scrollIntoView({ behaviour: "smooth" });
+      lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
     }, 100);
   }, [activeMessages]);
 
