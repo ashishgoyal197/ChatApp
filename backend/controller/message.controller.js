@@ -51,7 +51,7 @@ export const sendMessage = async (req, res) => {
       receiverId,
       message,
       replyTo,
-      readBy: [senderId],
+      readBy: [],
     });
 
     if (newMessage) {
