@@ -88,8 +88,8 @@ NODE_ENV=development
 
 **Example:**
 ```env
-mongo_db_uri=mongodb+srv://username:password@cluster.mongodb.net/chatapp?retryWrites=true&w=majority
-jwt_secret=mysecretkey123456789
+mongo_db_uri=mongodb+srv://your_actual_username:your_actual_password@cluster.mongodb.net/chatapp?retryWrites=true&w=majority
+jwt_secret=your_strong_random_secret_key_here
 PORT=5000
 NODE_ENV=development
 ```
@@ -225,7 +225,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source.
 
 ## 👨‍💻 Author
 
