@@ -25,6 +25,31 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    title: {
+      type: String,
+      default: "",
+    },
+    bio: {
+      type: String,
+      default: "",
+    },
+    location: {
+      type: String,
+      default: "",
+    },
+    statusMessage: {
+      type: String,
+      default: "",
+    },
+    theme: {
+      type: String,
+      default: "light",
+      enum: ["light", "dark"],
+    },
+    lastSeen: {
+      type: Date,
+      default: null,
+    },
   },
   { timestamps: true }
 );

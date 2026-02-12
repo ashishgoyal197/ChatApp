@@ -4,7 +4,7 @@ import useConversation from "../zustand/useConversation";
 
 export default function useListenMessages() {
   const { socket } = useSocketContext();
-  const { setMessages } = useConversation();
+  const { setMessages, updateMessage } = useConversation();
 
   useEffect(() => {
     if (!socket) {
@@ -17,7 +17,11 @@ export default function useListenMessages() {
     };
 
     socket.on("newMessage", handleNewMessage);
+    socket.on("messageUpdated", updateMessage);
 
-    return () => socket.off("newMessage", handleNewMessage);
-  }, [socket, setMessages]);
+    return () => {
+      socket.off("newMessage", handleNewMessage);
+      socket.off("messageUpdated", updateMessage);
+    };
+  }, [socket, setMessages, updateMessage]);
 }

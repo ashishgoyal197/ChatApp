@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAuthContext } from "./AuthContext";
 import { io } from "socket.io-client";
@@ -14,24 +15,20 @@ export const SocketContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io("https://chatapp-t2xt.onrender.com", {
+      const socketInstance = io("https://chatapp-t2xt.onrender.com", {
         query: {
           userId: authUser._id,
         },
       });
-      setSocket(socket);
+      setSocket(socketInstance);
 
-      socket.on("getOnlineUsers", (users) => {
+      socketInstance.on("getOnlineUsers", (users) => {
         setOnlineUsers(users);
       });
 
-      return () => socket.close();
-    } else {
-      if (socket) {
-        socket.close();
-        setSocket(null);
-      }
+      return () => socketInstance.close();
     }
+    setSocket(null);
   }, [authUser]);
   return (
     <SocketContext.Provider value={{ socket, onlineUsers }}>

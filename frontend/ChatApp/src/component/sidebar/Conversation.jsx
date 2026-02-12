@@ -1,5 +1,6 @@
 import { useSocketContext } from "../../context/SocketContext";
 import useConversation from "../../zustand/useConversation";
+import { formatLastSeen } from "../../utils/extractTime";
 
 export default function Conversation(props) {
   const { selectedConversation, setSelectedConversation } = useConversation();
@@ -37,6 +38,16 @@ export default function Conversation(props) {
               {props.conversation.fullname}
             </p>
           </div>
+          <p className="text-xs text-slate-500">
+            {isOnline
+              ? "Online"
+              : formatLastSeen(props.conversation.lastSeen)}
+          </p>
+          {props.conversation.statusMessage && (
+            <p className="text-xs text-slate-400">
+              {props.conversation.statusMessage}
+            </p>
+          )}
         </div>
       </div>
 
