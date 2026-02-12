@@ -20,15 +20,21 @@ const populateMessage = (messageId) => {
   });
 };
 
+const validateMessageContent = (message, res) => {
+  if (!message || !message.trim()) {
+    res.status(400).json({ error: "Message cannot be empty" });
+    return false;
+  }
+  return true;
+};
+
 export const sendMessage = async (req, res) => {
   try {
     const { message, replyTo } = req.body;
     const { id: receiverId } = req.params;
     const senderId = req.user._id;
 
-    if (!message || !message.trim()) {
-      return res.status(400).json({ error: "Message cannot be empty" });
-    }
+    if (!validateMessageContent(message, res)) return;
 
     let conversation = await Conversation.findOne({
       participants: { $all: [senderId, receiverId] },
@@ -130,9 +136,7 @@ export const editMessage = async (req, res) => {
     const { message } = req.body;
     const senderId = req.user._id;
 
-    if (!message || !message.trim()) {
-      return res.status(400).json({ error: "Message cannot be empty" });
-    }
+    if (!validateMessageContent(message, res)) return;
 
     const targetMessage = await Message.findById(messageId);
     if (!targetMessage) {
