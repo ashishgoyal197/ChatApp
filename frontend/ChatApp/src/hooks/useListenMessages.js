@@ -4,14 +4,20 @@ import useConversation from "../zustand/useConversation";
 
 export default function useListenMessages() {
   const { socket } = useSocketContext();
-  const { messages, setMessages } = useConversation();
+  const { setMessages } = useConversation();
 
   useEffect(() => {
-    socket?.on("newMessage", (newMessage) => {
-      newMessage.shouldShake = true;
-      setMessages([...messages, newMessage]);
+    if (!socket) {
+      return;
+    }
 
-      return () => socket?._off("newMessage");
-    });
-  }, [socket, setMessages, messages]);
+    const handleNewMessage = (newMessage) => {
+      newMessage.shouldShake = true;
+      setMessages((prevMessages) => [...prevMessages, newMessage]);
+    };
+
+    socket.on("newMessage", handleNewMessage);
+
+    return () => socket.off("newMessage", handleNewMessage);
+  }, [socket, setMessages]);
 }

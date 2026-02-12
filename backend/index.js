@@ -26,17 +26,17 @@ app.use("/api/users", userRoutes);
 
 app.use(express.static(path.join(__dirname, "/frontend/ChatApp/dist")));
 
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
+
 app.get("*", (req, res) => {
   res.sendFile(
     path.join(__dirname, "frontend", "ChatApp", "dist", "index.html")
   );
 });
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
-
 server.listen(PORT, () => {
   connectToMongoDB();
-  console.log(`Server is listning at ${PORT}`);
+  console.log(`Server is listening at ${PORT}`);
 });
