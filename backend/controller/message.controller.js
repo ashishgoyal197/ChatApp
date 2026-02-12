@@ -130,12 +130,6 @@ export const editMessage = async (req, res) => {
     if (!targetMessage) {
       return res.status(404).json({ error: "Message not found" });
     }
-    if (
-      targetMessage.senderId.toString() !== userId.toString() &&
-      targetMessage.receiverId.toString() !== userId.toString()
-    ) {
-      return res.status(403).json({ error: "Not authorized to react" });
-    }
     if (targetMessage.senderId.toString() !== senderId.toString()) {
       return res.status(403).json({ error: "Not authorized to edit" });
     }

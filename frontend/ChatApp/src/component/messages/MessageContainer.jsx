@@ -94,9 +94,6 @@ export default function MessageContainer() {
                 </span>
               </div>
             </div>
-            {screenWidth <= "750" ? (
-              ""
-            ) : null}
             <div className="flex items-center gap-2">
               <input
                 type="text"

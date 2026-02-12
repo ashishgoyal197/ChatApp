@@ -35,9 +35,7 @@ export default function MessageInput() {
     }, 900);
 
     return () => {
-      if (message.trim()) {
-        socket.emit("stopTyping", { receiverId: selectedConversation._id });
-      }
+      socket.emit("stopTyping", { receiverId: selectedConversation._id });
       clearTimeout(typingTimeout.current);
     };
   }, [message, selectedConversation?._id, socket]);
